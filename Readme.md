@@ -45,23 +45,28 @@ kubectl get svc
 ```
 
 ### 📂 Kubernetes
-`config.yaml` -> It sets up the deployments and services for the online store without annotations.
-`config-consul.yaml` -> A configuration file that is applied when Consul has been deployed to the cluster.  It defines the online store's deployments and services, as well as annotations enabling for service discovery via metadata.
-`consul-values.yaml` ->  Contains the values required for installing Consul using Helm charts.
-`consul-mesh-gateway.yaml` -> YAML definition for deploying a Consul Mesh Gateway (for cross-datacenter).
-`exported-service.yaml` -> Declares a Kubernetes service to be exported across meshes or datacenters via Consul.
-`service-resolver.yaml` -> Configures the Linode service as a backup or failover option for the same service running on EKS.
+The microservices and supporting configurations are deployed to Kubernetes. Here's a breakdown:
+`config.yaml` -> Base service and deployment definitions (pre-Consul).
+`config-consul.yaml` -> Modified manifests that include Consul annotations.
+`consul-values.yaml` ->   Helm values used to configure Consul installation.
+`consul-mesh-gateway.yaml` -> Defines a gateway for cross-cluster or multi-datacenter service communication.
+`exported-service.yaml` -> Makes services accessible across clusters.
+`service-resolver.yaml` -> Provides fallback or failover behavior for services between environments (e.g., Linode → EKS).
 
 ### 📂 Terraform
-`main.tf` -> Main entry point for your Terraform setup, likely combining all modules and resources.
-`providers.tf` -> Declares providers (e.g., AWS, Helm, Kubernetes) and authentication credentials.
-`variables.tf` -> Declares all variables (types, defaults) that can be set in `terraform.tfvars`.
-`terraform.tfvars` -> Supplies variable values (e.g., aws_access_key_id, region) for use in variables.tf.
+`main.tf` -> Core configuration combining modules and resources.
+`providers.tf` -> Declares used providers like AWS, Helm, and Kubernetes.
+`variables.tf` -> Defines configurable input variables.
+`terraform.tfvars` -> Contains values for variables such as AWS credentials.
 
 ### Screenshorts of the Service Interface
-![Home page](ScreenShotHome.png)
-![Details page](ScreenShotDetails.png)
-![Cart page](ScreenShotCart.png)
+![Home page](![image](https://github.com/user-attachments/assets/98b03045-4b20-4e8c-9378-83ad63f823d3))
+![Cart page](![image](https://github.com/user-attachments/assets/1401679c-9770-485b-a0ff-e31505e79732)
+![EKS Service page](![image](https://github.com/user-attachments/assets/5954fa61-8721-4b9e-b6e7-d69d8bf59918)
+![LKE Service page](![image](https://github.com/user-attachments/assets/e6d15621-30fe-4f8f-abf1-005772e8d885)
+)
+
+)
 
 ## GCP source codes
 This [demo project](https://github.com/GoogleCloudPlatform/microservices-demo) made by Google Cloud Platform.
