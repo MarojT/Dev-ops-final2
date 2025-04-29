@@ -46,17 +46,26 @@ kubectl get svc
 
 ### 📂 Kubernetes
 The microservices and supporting configurations are deployed to Kubernetes. Here's a breakdown:
+
 `config.yaml` -> Base service and deployment definitions (pre-Consul).
+
 `config-consul.yaml` -> Modified manifests that include Consul annotations.
+
 `consul-values.yaml` ->   Helm values used to configure Consul installation.
+
 `consul-mesh-gateway.yaml` -> Defines a gateway for cross-cluster or multi-datacenter service communication.
+
 `exported-service.yaml` -> Makes services accessible across clusters.
+
 `service-resolver.yaml` -> Provides fallback or failover behavior for services between environments (e.g., Linode → EKS).
 
 ### 📂 Terraform
 `main.tf` -> Core configuration combining modules and resources.
+
 `providers.tf` -> Declares used providers like AWS, Helm, and Kubernetes.
+
 `variables.tf` -> Defines configurable input variables.
+
 `terraform.tfvars` -> Contains values for variables such as AWS credentials.
 
 ### Screenshorts of the Service Interface
